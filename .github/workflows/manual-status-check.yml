@@ -1,0 +1,19 @@
+name: Manual Status Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show assistant files
+        run: |
+          echo "AI Assistant HQ files:"
+          ls -la
+          echo ""
+          echo "Current tasks:"
+          sed -n '1,120p' TASKS.md
